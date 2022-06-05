@@ -146,3 +146,27 @@ text = """Python is a general-purpose language.
 Python is popular."""
 
 print(text.strip('"').split('\n'))
+
+"""
+The following variable is given:
+
+    num = 34
+Using the appropriate method for an object of type str, print 
+the variable num preceded by four zeros to console as shown:
+
+    000034
+"""
+num = 34
+print(str(num).zfill(6))
+
+
+"""
+From the given url:
+    url = 'https://e-smartdata.teachable.com/p/sciezka-data-scientist-machine-learning-engineer'
+extract the slug after the last character '/'. Then replace all dashes 
+with spaces and print the result to console as shown below:
+"""
+
+url = 'https://e-smartdata.teachable.com/p/sciezka-data-scientist-machine-learning-engineer'
+slug = url.split('/')[4] # or url.split('/)[-1]
+print(slug.replace('-', ' '))
