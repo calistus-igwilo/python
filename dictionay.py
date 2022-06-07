@@ -6,6 +6,9 @@ Create a dictionary from the following pairs (key, value):
 and print to the console
 """
 
+from ast import Delete
+
+
 dict = {'USA': 'Washington', 'Germany': 'Berlin', 'Austria': 'Vienna'}
 print(dict)
 
@@ -126,5 +129,78 @@ stocks = {
 }
 stocks['V.US'] = {'Visa Inc': 185}
 print(stocks.values())
+
+
+"""
+A list of tickers from the Dow Jones index is given:
+
+tickers = [
+    'AAPL.US', 'AXP.US', 'BA.US', 'CAT.US',
+    'CSCO.US', 'CVX.US', 'DIS.US', 'DOW.US',
+    'GS.US', 'HD.US', 'IBM.US', 'INTC.US'
+]
+Transform the list into a list of a two-element tuple objects (index, ticker)
+and print to the console.
+
+Expected result:
+(0, 'AAPL.US'), (1, 'AXP.US'), (2, 'BA.US'), (3, 'CAT.US'), (4, 'CSCO.US'), (5, 'CVX.US'), (6, 'DIS.US'), (7, 'DOW.US'), (8, 'GS.US'), (9, 'HD.US'), (10, 'IBM.US'), (11, 'INTC.US')]
+"""
+
+tickers = [
+    'AAPL.US', 'AXP.US', 'BA.US', 'CAT.US',
+    'CSCO.US', 'CVX.US', 'DIS.US', 'DOW.US',
+    'GS.US', 'HD.US', 'IBM.US', 'INTC.US'
+]
+
+print(list(enumerate(tickers)))
+
+
+"""
+Transform the tickers into a dictionary and print to the console
+"""
+# list_tuple = list(enumerate(tickers))
+# print(f' To tuple {list_tuple}')
+# print(dict(enumerate(tickers)))
+# dct = dict((y, x) for x, y in list_tuple)
+
+
+"""
+The following dictionary is given:
+
+project_ids = {
+    '01': 'open', 
+    '03': 'in progress',
+    '05': 'in progress',
+    '04': 'completed'
+}
+Extract a list of unique values (sorted alphabetically) from the 
+project_ids dictionary and print to the console
+
+Expected result:
+    ['completed', 'in progress', 'open']
+"""
+
+project_ids = {
+    '01': 'open', 
+    '03': 'in progress',
+    '05': 'in progress',
+    '04': 'completed'
+}
+result = list(set(project_ids.values()))
+result.sort()
+print(result)
+
+
+# Delete (del)
+"""
+The following dictionary is given:
+    stats = {'site': 'e-smartdata.org', 'traffic': 100, 'type': 'organic'}
+Delete the 'traffic' key pair from the dictionary and print to the console
+
+"""
+
+stats = {'site': 'e-smartdata.org', 'traffic': 100, 'type': 'organic'}
+del stats['traffic']
+print(stats)
 
 
