@@ -1,5 +1,6 @@
+##############################
 # INBUILT FUNCTIONS
-
+##############################
 """
 The variable x
     x = -1.5
@@ -272,3 +273,4 @@ def is_palindrome(string):
     else:
         return False
 print(is_palindrome('level'))
+
