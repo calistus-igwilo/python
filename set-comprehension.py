@@ -66,7 +66,3 @@ print(f'Odd numbers: {odd}')
 prob = round(len(odd)/len(omega), 3)
 print(prob)
 
-
-"""
-
-"""
