@@ -81,3 +81,32 @@ Note: Don't use anything related to strings
 """
 for i in range(1, 5):
     print(i * 10**i // 9) # use math operation to get all 1s and multiply by index
+
+
+"""
+You are given a string S 
+Your task is to print all possible permutations of size  of the string 
+in lexicographic sorted order.
+"""
+from itertools import permutations
+s, num = input().split()
+result = sorted(list(permutations(s, int(num))))
+for i in result:
+    print("".join(i))
+
+
+"""
+Read input from STDIN and display the cartesan space.
+
+Example 
+input 1: 1 2
+input 2: 3 4
+Output:  
+    (1, 3) (1, 4) (2, 3) (2, 4)
+"""
+a = list(map(int, input().split()))
+b = list(map(int, input().split()))
+result = [(i, j) for i in a for j in b]
+for i in result:
+    print(i, end=" ")
+
