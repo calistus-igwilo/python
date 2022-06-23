@@ -95,18 +95,46 @@ for i in result:
     print("".join(i))
 
 
-"""
-Read input from STDIN and display the cartesan space.
+# """
+# Read input from STDIN and display the cartesan space.
 
-Example 
-input 1: 1 2
-input 2: 3 4
-Output:  
-    (1, 3) (1, 4) (2, 3) (2, 4)
-"""
-a = list(map(int, input().split()))
-b = list(map(int, input().split()))
-result = [(i, j) for i in a for j in b]
-for i in result:
-    print(i, end=" ")
+# Example 
+# input 1: 1 2
+# input 2: 3 4
+# Output:  
+#     (1, 3) (1, 4) (2, 3) (2, 4)
+# """
+# a = list(map(int, input().split()))
+# b = list(map(int, input().split()))
+# result = [(i, j) for i in a for j in b]
+# for i in result:
+#     print(i, end=" ")
 
+"""
+Valid Parenthesis:
+Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', 
+determine if the input string is valid.
+
+An input string is valid if:
+Open brackets must be closed by the same type of brackets.
+Open brackets must be closed in the correct order.
+"""
+def brackets(s):
+    stack = []
+    if len(s) % 2 != 0:
+        return 'invalid'
+    dic = {'(': ')', '{': '}', '[': ']' }
+    for i in s:
+        if i in dic.keys():
+            stack.append(i)
+            print(stack)
+        else:
+            if stack == []:
+                return 'invalid'
+            a = stack.pop()
+            if i != dic[a]:
+                return 'invalid'
+    return 'valid'
+
+s = "({[]})"
+print(brackets(s))
