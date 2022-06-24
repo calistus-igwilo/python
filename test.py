@@ -1,3 +1,4 @@
+import array
 from curses.ascii import isdigit
 
 
@@ -52,3 +53,10 @@ print(brackets(s))
 #     print('Yes')
 # else:
 #     print("No")
+
+arr = [2, 3]
+print(f' Type arr: {type(arr)}')
+if type(arr) == list:
+    print(f'{arr} is an array')
+else:
+    print("Not an array")
