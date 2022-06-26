@@ -57,6 +57,10 @@ print(brackets(s))
 arr = [2, 3]
 print(f' Type arr: {type(arr)}')
 if type(arr) == list:
-    print(f'{arr} is an array')
+    print(f'{arr} is a list array')
 else:
-    print("Not an array")
+    print("Not a list array")
+
+l = [1, 2, 3]
+permutation = [[i, j, k] for i, j, k in l]
+print(f'Permutation of {l}: {permutation}')
