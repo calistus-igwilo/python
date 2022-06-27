@@ -111,6 +111,30 @@ def palindrome(s):
 print(palindrome(s))
 
 
+"""
+
+"""
+def max_substr(s):
+    strList = []
+    hashTable = {}
+    max_ = 0
+    start = 0
+    for i in range(len(s)-1):
+        if s[i] not in hashTable:
+            hashTable[s[i]] = i
+            max_ = max(start, i - start+1)
+        else:
+            strList.append(s[start:i])
+            start = max(start, hashTable[s[i]]+1)
+            hashTable[s[i]] = i
+    print(f'Substrings: {strList}')
+    return max_
+s = 'abcdbefghijklmef'
+print(max_substr(s))          
+
+
+
+
 
 
 
