@@ -3,6 +3,11 @@ You are given a string consisting of only lowercase and uppercase English Alphab
 and integers 0 to 9. Write a function that will take this string as input and return 
 the index of the first character that is repeating.
 """
+
+from posixpath import split
+from turtle import clear
+
+
 def repeat(s):
     hashTable = {}
     for i in range(len(s)-1):
@@ -112,7 +117,7 @@ print(palindrome(s))
 
 
 """
-
+Given a string s, find the length of the longest substring without repeating characters
 """
 def max_substr(s):
     strList = []
@@ -129,10 +134,59 @@ def max_substr(s):
             hashTable[s[i]] = i
     print(f'Substrings: {strList}')
     return max_
+    # Time complexity = O(n). Space complexity = O(n)
 s = 'abcdbefghijklmef'
 print(max_substr(s))          
 
 
+"""
+Given an array of strings consisting of lower case English letters, group the 
+anagrams together. You can return the answer in any order. An Anagram is a 
+word or phrase formed by rearranging the letters of a different word or phrase,
+using all the original letters exactly once.
+"""
+def anagrams(arr):
+    list_ = []
+    hashTable = {}
+    if len(arr) == 1 or len(arr) == 0:
+        return arr
+    print(arr)
+    sortList = [''.join(sorted(item)) for item in arr]
+    for i in range(len(arr)):
+        if sortList[i] in hashTable:
+            hashTable[sortList[i]] += [arr[i]]
+        else: 
+            hashTable[sortList[i]] =  [arr[i]]
+    return hashTable.values()
+    # Time complexity = O(S x nlogn) where S = number of strings and n = max number of
+    # strings in the character.
+    # Space complexity = O(S x n)
+
+arr = ['arc', 'abc', 'car', 'cat', 'act', 'acb', 'atc']
+print(anagrams(arr))
+
+
+"""
+Given an array of integers which is sorted in ascending order, and a target integer,
+write a function to search for whether the target integer is there in the given array.
+If it is there, then return its index. Otherwise, return -1. You must write an 
+algorithm with O(logn) runtime complexity.
+"""    
+def binary_search(nums, target):
+    pointerLeft = 0
+    pointerRight = len(nums)-1
+    while pointerLeft <= pointerRight:
+        middle = (pointerRight + pointerLeft) // 2
+        print(f'pointerLeft: {pointerLeft}, pointerRight: {pointerRight}')
+        if target == nums[middle]:
+            return middle
+        elif target < nums[middle]:
+            pointerRight = middle - 1
+        elif target > nums[middle]:
+            pointerLeft = middle + 1        
+    return -1
+nums = [2, 3, 7, 9, 11, 23, 37, 81, 87, 89]
+print(binary_search(nums, 9))
 
 
 
