@@ -17,9 +17,27 @@ def bubble_sort(nums):
                 sorted_ = False  # only false when items are swapped
         cnt += 1
     return nums
+    # Time complexity = O(n**2). Space complexity = O(1)
 
 nums = [2,3,7,1,8]
 print(bubble_sort(nums))
 
+
+"""
+Given an array of integers. Write a function that will take this array as input
+and return sorted array using insertion sort
+"""
+def insertion_sort(nums):
+    for i in range(len(nums)):
+        j = i-1
+        temp = nums[i]
+        while j >= 0 and nums[j] > temp:
+            nums[j+1] = nums[j]
+            j -= 1
+        nums[j+1] = temp
+    return nums
+
+nums = [4,3,2,1]
+print(insertion_sort(nums))
         
 
