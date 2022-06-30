@@ -51,8 +51,42 @@ def selection_sort(nums):
         for j in range(i+1, len(nums)):
             if nums[smallest] > nums[j]:
                 smallest = j
-        #if i != smallest: 
-        nums[i], nums[smallest] = nums[smallest], nums[i]
+        if i != smallest: 
+            nums[i], nums[smallest] = nums[smallest], nums[i]
     return nums
 nums = [4,3,2,1,2]
 print(selection_sort(nums))
+
+
+"""
+Merge sort
+"""
+def merge_sorted_array(arr1, arr2):
+    merged_array = []
+    i = 0
+    j = 0
+    while i < len(arr1) and j < len(arr2):
+        if arr1[i] <= arr2[j]:
+            merged_array.append(arr1[i])
+            i += 1
+        else:
+            merged_array.append(arr2[j])
+            j += 1
+    while i < len(arr1):
+        merged_array.append(arr1[i])  #push the remaining arr1 elements into merged array
+        i += 1
+    while j < len(arr2):
+        merged_array.append(arr2[j])  # push the remaining arr2 elements into merged array
+        j += 1
+    return merged_array
+
+def merge_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    middle = len(arr) // 2
+    leftside = merge_sort(arr[:middle])
+    rightside = merge_sort(arr[middle:])
+    return merge_sorted_array(leftside, rightside)
+
+arr = [5,3,7,8,1,9,12]
+print(merge_sort(arr))
