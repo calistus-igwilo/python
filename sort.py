@@ -90,3 +90,9 @@ def merge_sort(arr):
 
 arr = [5,3,7,8,1,9,12]
 print(merge_sort(arr))
+
+
+"""
+Quick Sort: You are given an array of integers. Write a function that will take this
+array as input and return the sorted array using Quick sort
+"""
