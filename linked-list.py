@@ -12,6 +12,9 @@ node. The linke list is to be 0-indexed. The class should support the following:
     valid, else nothing happens
 """
 
+from traceback import print_list
+
+
 class Node:
     def __init__(self, value):
         self.value = value 
@@ -100,9 +103,18 @@ class Singly_Linked_List:
             prev.next = deleted_node.next
             self.size -= 1
             return deleted_node
+    
+    def print_list(self):
+        current = self.head
+        while current is not None:
+            print(current.value, end=" ")
+            current = current.next
         
 sl = Singly_Linked_List()
-
+sl.add_at_head(1)
+sl.add_at_head(2)
+sl.add_at_tail(3)
+print(sl.print_list())
 
 
 
