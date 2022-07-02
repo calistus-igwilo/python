@@ -12,9 +12,6 @@ node. The linke list is to be 0-indexed. The class should support the following:
     valid, else nothing happens
 """
 
-from traceback import print_list
-
-
 class Node:
     def __init__(self, value):
         self.value = value 
@@ -132,14 +129,22 @@ head.next.next.next = Node(3)
 head.next.next.next.next = Node('a')
 head.next.next.next.next.next = Node('a')
 
+
 def delete_duplicates(head):
     current = head
     while current:
         next_distinct_value = current.next
         while next_distinct_value != None and current.value == next_distinct_value.value:
             next_distinct_value = next_distinct_value.next
-        current.next = next_distinct_value       
+        current.next = next_distinct_value
+        current = next_distinct_value       
     return head
 
+def print_list(node):
+        current = head
+        while current is not None:
+            print(current.value, end=" ")
+            current = current.next
 
+print_list(delete_duplicates(head))
 
