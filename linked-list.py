@@ -114,7 +114,32 @@ sl = Singly_Linked_List()
 sl.add_at_head(1)
 sl.add_at_head(2)
 sl.add_at_tail(3)
+sl.add_at_index(2, 3)
 print(sl.print_list())
+
+
+"""
+You are given the head of a Sorted Singly Linked list. Write a function that will 
+take the given head as input, delete all nodes that have a value that is already
+the value of another node so that each value appears 1 time only and return the 
+linked list, which is still to be a sorted linked list
+"""
+# create some entries into a linked list called head
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(2)
+head.next.next.next = Node(3)
+head.next.next.next.next = Node('a')
+head.next.next.next.next.next = Node('a')
+
+def delete_duplicates(head):
+    current = head
+    while current:
+        next_distinct_value = current.next
+        while next_distinct_value != None and current.value == next_distinct_value.value:
+            next_distinct_value = next_distinct_value.next
+        current.next = next_distinct_value       
+    return head
 
 
 
