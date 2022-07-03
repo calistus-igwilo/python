@@ -12,6 +12,7 @@ node. The linke list is to be 0-indexed. The class should support the following:
     valid, else nothing happens
 """
 
+
 class Node:
     def __init__(self, value):
         self.value = value 
@@ -147,4 +148,30 @@ def print_list(node):
             current = current.next
 
 print_list(delete_duplicates(head))
+
+
+"""
+Reverse SLL: You are given a head of a Singly Linked List. Write a function that will
+take the given head as input, reverse the Linked List and return the new head of the
+reversed Linked List.
+"""
+# store some values in the singly linked list
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+head.next.next.next = Node(4)
+
+def reverse_linked_list(head):
+    prev = None
+    current = head
+    while current:
+        next = current.next 
+        current.next = prev
+        prev = current
+        current = next 
+    return prev 
+
+print_list(reverse_linked_list(head))
+
+
 
