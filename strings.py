@@ -170,3 +170,65 @@ with spaces and print the result to console as shown below:
 url = 'https://e-smartdata.teachable.com/p/sciezka-data-scientist-machine-learning-engineer'
 slug = url.split('/')[4] # or url.split('/)[-1]
 print(slug.replace('-', ' '))
+
+
+"""
+Write 3 Python functions that parse and output only the date and time part of each log
+ in log.txt as follows.
+
+Content of "log.txt":
+10.1.2.1 - car [01/Mar/2022:13:05:05 +0900] "GET /python HTTP/1.0" 200 2222
+10.1.1.9 - bike [01/Mar/2022:13:05:10 +0900] "GET /python HTTP/1.0" 200 2222
+
+Expected output:
+01/Mar/2022:13:05:05 +0900
+01/Mar/2022:13:05:10 +0900
+"""
+def parse1():
+    for line in open("log.txt"):
+        print(line.split("[")[1].split("]")[0])
+
+def parse2():
+    for line in open("log.txt", "rw"):
+        print(" ".join(line.split()[3:5]).strip("[]"))
+
+def parse3():
+    for line in open("log.txt"):
+        print(re.split("\[|\]", line)[1])
+
+
+class FunEvent:
+    def __init__(self, tags, year):
+        self.tags = tags
+        self.year = year
+    
+    def __str__(self):
+        return f"FunEvent(tags={self.tags}, year={self.year})"
+
+tags = ["google", "ml"]
+year = 2022
+bootcamp = FunEvent(tags, year)
+print(f'First bootcamp: {bootcamp}')
+tags.append("bootcamp")
+year = 2023
+print(bootcamp)
+
+
+class BaseLayer:
+    def __init__(self, name=""):
+        self.name = name
+
+    def __repr__(self):
+        return f"{self.name}Layer"
+
+class ActivationLayer(BaseLayer):
+    def __init__(self, size):
+        super().__init__("Activation")
+        self.size = size
+
+class FCLayer(BaseLayer):
+    def __init__(self, size):
+        super().__init__("FullyConnected")
+        self.size = size
+
+print(FCLayer(42))

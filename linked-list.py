@@ -174,4 +174,51 @@ def reverse_linked_list(head):
 print_list(reverse_linked_list(head))
 
 
+"""
+Tortise and Hare: You are given the head of alinked list. Check if there is a cycle
+and if yes, return the node where the cycle begins. If there is no cycle, return null
+There is a cycle in a linked list if there is some node inthe list that can be reached
+again by continuously following the next pointer. Do not modify the linked list
+"""
+def checkloop(head):
+    if not head:
+        return None
+    if not head.next:
+        return None 
+    
+    hare = head
+    tortoise = head
+    while hare and hare.next:  # while there is a node and no null
+        hare = hare.next.next
+        tortoise = tortoise.next
+        if hare == tortoise:  # when they meet, it means that there is a loop
+            break
+    if hare != tortoise:  # if the reason for breakout is not hare = tortoise
+        return None
+        # find where the cycle begins
+    pointer = head
+    while pointer != tortoise:
+        pointer = pointer.next
+        tortoise = tortoise.next
+    return tortoise
 
+
+# input values to the linked list
+one = Node(1)
+two = Node(2)
+three = Node(3)
+four = Node(4)
+five = Node(5)
+six = Node(6)
+
+one.next = two
+two.next = three
+three.next = four
+four.next = five
+five.next = six 
+# make a loop
+six.next = two 
+
+head = one
+
+print(checkloop(head))

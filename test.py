@@ -61,6 +61,22 @@ if type(arr) == list:
 else:
     print("Not a list array")
 
-l = [1, 2, 3]
-permutation = [[i, j, k] for i, j, k in l]
-print(f'Permutation of {l}: {permutation}')
+# l = [1, 2, 3]
+# permutation = [[i, j, k] for i, j, k in l]
+# print(f'Permutation of {l}: {permutation}')
+
+lines = [1,2,3,4,5,6,7,8,9]
+print(lines[-4:])
+
+import re
+with open("log.txt", 'r') as lines:
+    for line in lines:
+        #print(line[3])
+        print(line.split("[")[1].split("]")[0])
+        #print(line.split()[3].strip("[]"))
+        #print(line.split("[" or "]"[3:5]))
+        #print(" ".join(line.split()[3:5]).strip("[]"))
+        #print(re.split("\[|\]", line)[1])
+
+
+
