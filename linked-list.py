@@ -222,3 +222,58 @@ six.next = two
 head = one
 
 print(checkloop(head))
+
+
+"""
+Given an array of integers nums containing n+1 integers where each integer is in the 
+range [1, n] inclusive. There is only one repeated number in nums, return this repeated
+number. You must solve the problem without modifying the array nums and use only constant
+extra space
+"""
+def get_duplicate(nums):
+    tortoise = 0
+    hare = 0
+
+    while True:
+        hare = nums[nums[hare]] # moves 2 spaces at a time
+        tortoise = nums[tortoise] # moves a single space
+
+        if hare == tortoise:
+            pointer = 0
+            while pointer != tortoise:
+                pointer = nums[pointer]
+                tortoise = nums[tortoise]
+            return pointer
+
+
+"""
+
+"""
+def add_2_numbers(l1, l2):
+    carry_forward = 0
+    results = Singly_Linked_List()
+    while l1 or l2 or carry_forward:
+        l1_value = l1.value if l1 else 0
+        l2_value = l2.value if l2 else 0
+        sum_ = l1_value + l2_value + carry_forward
+        node_value_in_result = sum_ % 10
+        print(f'node value: {node_value_in_result}')
+        results.add_at_tail(node_value_in_result)
+        carry_forward = sum_ // 10
+        print(f'carry forward: {carry_forward}')
+        l1 = l1.next if l1 else None
+        l2 = l2.next if l2 else None
+    return results
+
+l1 = Singly_Linked_List()
+l2 = Singly_Linked_List()
+# 540 + 723 = 1263
+l1.add_at_tail(0)
+l1.add_at_tail(4)
+l1.add_at_tail(5)
+
+l2.add_at_tail(3)
+l2.add_at_tail(2)
+l2.add_at_tail(7)
+
+print(add_2_numbers(l1.head, l2.head))
