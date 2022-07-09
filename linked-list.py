@@ -253,14 +253,14 @@ def add_2_numbers(l1, l2):
     carry_forward = 0
     results = Singly_Linked_List()
     while l1 or l2 or carry_forward:
-        l1_value = l1.value if l1 else 0
+        l1_value = l1.value if l1 else 0  #conditional operator
         l2_value = l2.value if l2 else 0
         sum_ = l1_value + l2_value + carry_forward
         node_value_in_result = sum_ % 10
-        print(f'node value: {node_value_in_result}')
+        #print(f'node value: {node_value_in_result}')
         results.add_at_tail(node_value_in_result)
         carry_forward = sum_ // 10
-        print(f'carry forward: {carry_forward}')
+        #print(f'carry forward: {carry_forward}')
         l1 = l1.next if l1 else None
         l2 = l2.next if l2 else None
     return results
@@ -277,3 +277,52 @@ l2.add_at_tail(2)
 l2.add_at_tail(7)
 
 print(add_2_numbers(l1.head, l2.head))
+
+
+"""
+Create a Doubly Linke List class. Write Instance Methods for this class to be able to
+1. Remove a node when the node to be removed is given as input
+2. Insert a node before a particluar node (both the node to be inserted and the node 
+    before which the insertion is to happen will be given as input). If the node to be
+    inserted  is
+    - part of the linked list then shift its place to the dsired location
+    - a new node, then insert the new node at the place desired.
+"""
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        self.prev = None
+
+def link_nodes(node1, node2):
+    node1.next = node2
+    node2.prev = node1
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+one = Node(1)
+two = Node(2)
+three = Node(3)
+four = Node(4)
+five = Node(5)
+
+linked_list_doubly = DoublyLinkedList()
+
+link_nodes(one,two)
+link_nodes(two,three)
+link_nodes(three,four)
+link_nodes(four,five)
+linked_list_doubly.head = one
+linked_list_doubly.tail = five
+
+print(linked_list_doubly)
+def print_list_doubly(node):
+        current = head
+        for _ in range(5):
+        #while current is not None:
+            print(current.value, end=" ")
+            current = current.next
+print_list_doubly(linked_list_doubly)
