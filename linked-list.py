@@ -336,6 +336,15 @@ class DoublyLinkedList:
         else:
             node_position.prev.next = node_insert
         node_position.prev = node_insert
+    
+    def remove_all_nodes_value(self, value):
+        current = self.head # pass the head into the function
+        while current:  #if not None
+            temp = current  #to keep track and not loose the node pointers
+            current = current.next
+            if temp.value == value:
+                self.remove(temp)
+
 
     def display(self):    
         #Node current will point to head    
@@ -354,6 +363,8 @@ two = Node(2)
 three = Node(3)
 four = Node(4)
 five = Node(5)
+six = Node(2)
+seven = Node(7)
 
 linked_list_doubly = DoublyLinkedList()
 
@@ -361,9 +372,25 @@ link_nodes(one,two)
 link_nodes(two,three)
 link_nodes(three,four)
 link_nodes(four,five)
+link_nodes(five,six)
+link_nodes(six,seven)
+
 linked_list_doubly.head = one
 linked_list_doubly.tail = five
 
 linked_list_doubly.display()
 linked_list_doubly.insert_before(three, Node(6))
 linked_list_doubly.display()
+linked_list_doubly.remove_all_nodes_value(2)
+linked_list_doubly.display()
+
+
+"""
+Create a Doubly Linked List class. Write instance methods for this class to be able to
+1. remove all the nodes in the doubly linked list which have their value equal to a
+    given value
+2. Insert a node at a desired position (node and position are given). The linked list
+    is 0 indexed. If given node is a node existing in the linked list, shift it to 
+    the desired position
+"""
+# Solution given inside the DoublyLinkedList class
