@@ -79,4 +79,64 @@ with open("log.txt", 'r') as lines:
         #print(re.split("\[|\]", line)[1])
 
 
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.next = None
+        self.prev = None
 
+def link_nodes(node1, node2):
+    node1.next = node2
+    node2.prev = node1
+
+class DoublyLinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+    
+    def remove(self, node):
+        # remove from head or tail
+        if self.head == node:
+            self.head = node.next
+        if self.tail == node:
+            self.tail = node.prev 
+        
+        # remove from inside the list
+        if node.prev:
+            node.prev.next = node.next
+        if node.next:
+            node.next.prev = node.prev
+        # remove the existing pointers on the node
+        node.next = None
+        node.prev = None
+
+    def display(self):    
+        #Node current will point to head    
+        current = self.head;    
+        if(self.head == None):    
+            print("List is empty");    
+            return;    
+        print("Nodes of doubly linked list: ");    
+        while(current != None):     
+            #Prints each node by incrementing pointer.    
+            print(current.value, end=" "),;    
+            current = current.next;   
+
+one = Node(1)
+two = Node(2)
+three = Node(3)
+four = Node(4)
+five = Node(5)
+
+linked_list_doubly = DoublyLinkedList()
+
+link_nodes(one,two)
+link_nodes(two,three)
+link_nodes(three,four)
+link_nodes(four,five)
+linked_list_doubly.head = one
+linked_list_doubly.tail = five
+
+linked_list_doubly.display()
+linked_list_doubly.remove(two)
+linked_list_doubly.display()

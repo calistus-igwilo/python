@@ -247,7 +247,10 @@ def get_duplicate(nums):
 
 
 """
-
+You are give two non-empty linked lists representing two non-negative integers. The 
+digits are stored in reverse order, and each of their nodes contains a single digit.
+Add the two numbers and return the sum as a linked list. You may assume the two numbers
+do not contain anyleading zero, except the number 0 itself. 0<=Node value<=9
 """
 def add_2_numbers(l1, l2):
     carry_forward = 0
@@ -280,7 +283,7 @@ print(add_2_numbers(l1.head, l2.head))
 
 
 """
-Create a Doubly Linke List class. Write Instance Methods for this class to be able to
+Create a Doubly Linked List class. Write Instance Methods for this class to be able to
 1. Remove a node when the node to be removed is given as input
 2. Insert a node before a particluar node (both the node to be inserted and the node 
     before which the insertion is to happen will be given as input). If the node to be
@@ -302,6 +305,49 @@ class DoublyLinkedList:
     def __init__(self):
         self.head = None
         self.tail = None
+    
+    def remove(self, node):
+        # remove from head or tail
+        if self.head == node:
+            self.head = node.next
+        if self.tail == node:
+            self.tail = node.prev 
+        
+        # remove from inside the list
+        if node.prev:
+            node.prev.next = node.next
+        if node.next:
+            node.next.prev = node.prev
+        # remove the existing pointers on the node
+        node.next = None
+        node.prev = None
+    
+    def insert_before(self, node_position, node_insert):
+        # check if the DLL has only one node
+        if self.head == node_insert and self.tail == node_insert:
+            return
+        self.remove(node_insert) #if node to insert is part of the DLL
+        node_insert.prev = node_position.prev
+        node_insert.next = node_position
+
+        #check if nodeposition is the head, point the head to node_to_insert
+        if node_position == self.head:
+            self.head = node_insert
+        else:
+            node_position.prev.next = node_insert
+        node_position.prev = node_insert
+
+    def display(self):    
+        #Node current will point to head    
+        current = self.head;    
+        if(self.head == None):    
+            print("List is empty");    
+            return;    
+        print("Nodes of doubly linked list: ");    
+        while(current != None):     
+            #Prints each node by incrementing pointer.    
+            print(current.value, end=" "),;    
+            current = current.next;   
 
 one = Node(1)
 two = Node(2)
@@ -318,11 +364,6 @@ link_nodes(four,five)
 linked_list_doubly.head = one
 linked_list_doubly.tail = five
 
-print(linked_list_doubly)
-def print_list_doubly(node):
-        current = head
-        for _ in range(5):
-        #while current is not None:
-            print(current.value, end=" ")
-            current = current.next
-print_list_doubly(linked_list_doubly)
+linked_list_doubly.display()
+linked_list_doubly.insert_before(three, Node(6))
+linked_list_doubly.display()
