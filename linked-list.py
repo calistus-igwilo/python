@@ -345,6 +345,33 @@ class DoublyLinkedList:
             if temp.value == value:
                 self.remove(temp)
 
+    def insert_position(self, position, node):
+        current = self.head
+        counter = 0
+        # traverse the nodes until insert position is found
+        while current != None and counter != position:
+            current = current.next
+            counter += 1
+        #Either
+        if current != None:
+            self.insert_before(current, node)
+        else:
+            # if the DLL is empty or does not have any node
+            if self.head == None:
+                self.head = node
+                self.tail = node
+            else:
+                # if head is not equal to None and current is None, it means 
+                # that current is at the tail
+                self.remove(node) #in case the node to insert is in the DLL
+                node.next = None
+                node.prev = self.tail 
+                self.tail.next = node
+                self.tail = node
+                 
+
+
+
 
     def display(self):    
         #Node current will point to head    
@@ -379,9 +406,10 @@ linked_list_doubly.head = one
 linked_list_doubly.tail = five
 
 linked_list_doubly.display()
-linked_list_doubly.insert_before(three, Node(6))
-linked_list_doubly.display()
-linked_list_doubly.remove_all_nodes_value(2)
+#linked_list_doubly.insert_before(three, Node(6))
+#linked_list_doubly.display()
+#linked_list_doubly.remove_all_nodes_value(2)
+linked_list_doubly.insert_position(2, Node(6))
 linked_list_doubly.display()
 
 
@@ -393,4 +421,6 @@ Create a Doubly Linked List class. Write instance methods for this class to be a
     is 0 indexed. If given node is a node existing in the linked list, shift it to 
     the desired position
 """
-# Solution given inside the DoublyLinkedList class
+# Solutions given inside the DoublyLinkedList class as:
+#    1. remove_all_node_values()
+#    2. insert_position
