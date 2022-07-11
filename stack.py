@@ -69,15 +69,8 @@ stack.display()
 
 
 """
-Reverse polish notation:
-Evaluate the value of an arithmetic expression in Reverse Polish Notation. Valid 
-operators are +, -, *, and / Note that division between two integers should truncate
-toward zero. It is guaranteed that the given RPN expression is always valid. That 
-means the expression would always evaluate to a result, and there will not be any
-division by zero operation. The input is an array of strings where each element is
-either a valid operator or an integer. E.g ["1", "2", "+"]
+Implement a Stack class using List Array
 """
-
 class StackArray:
     """ LIFO Stack implementation using Python list/array as underlying storage"""
     def __init__(self):
@@ -111,6 +104,40 @@ class StackArray:
         if self.is_empty():
             raise IndexError("Stack is empty")
         return self._data.pop()  # remove last item from the list
+
+"""
+Reverse polish notation:
+Evaluate the value of an arithmetic expression in Reverse Polish Notation. Valid 
+operators are +, -, *, and / Note that division between two integers should truncate
+toward zero. It is guaranteed that the given RPN expression is always valid. That 
+means the expression would always evaluate to a result, and there will not be any
+division by zero operation. The input is an array of strings where each element is
+either a valid operator or an integer. E.g ["1", "2", "+"]
+"""
+def postfix(tokens):
+        """Implement the Reverse Polish Notation a.k.a postfix"""
+        stack = StackArray() #StackArray has the push method
+        # define key-value pairs for the operators
+        valid_operator = {
+            '+': lambda n1, n2: n1 + n2,
+            '-': lambda n1, n2: n1 - n2,
+            '*': lambda n1, n2: n1 * n2,
+            '/': lambda n1, n2: n1 // n2
+        }
+        for token in tokens:
+            # if token is an operator, execute the operation and push value to stack
+            if token in valid_operator:
+                n2 = stack.pop()
+                n1 = stack.pop()
+                result = valid_operator[token](n1, n2)
+                stack.push(result)
+            else:
+                # token is a number, push it to the stack
+                stack.push(int(token))
+        return stack.pop()  #return the final result
+
+print(postfix(['4','13','5','/','+']))
+
         
 
 
