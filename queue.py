@@ -63,3 +63,47 @@ class QueueArray:
             walk = (1 + walk) % len(old) # use old size as modulus
         self._front = 0                 # front realigned
 
+
+class Node:
+    def __init__(self, value):
+        """Create a node"""
+        self.value = value
+        self.next = None
+
+
+class QueueLinkedList:
+    """Implement Queue data structure using Singly Linked List"""
+    def __init__(self):
+        """Create empty queue"""
+        self.first = None
+        self.last = None
+        self.size = 0
+    
+    def enqueue(self, value):
+        """Add a value at the end of the queue"""
+        node = Node(value)  # create a node
+        #if queue is empty, make the new node the head and tails
+        if not self.first:
+            self.first = node
+            self.last = node
+        else:
+            # add the new node at the tail
+            self.last.next = node
+            self.last = node
+        self.size += 1
+        return self
+
+    def dequeue(self):
+        """Remove the first element in a queue"""
+        if not self.first:   #if queue is empty return None
+            return None
+        # remove the first element
+        temp = self.first
+        self.first = self.first.next  #make the next element the first
+        self.size -= 1
+        #if the removed node is the only node, then the queue is empty
+        if self.size == 0:
+            self.last = None
+        return temp     # return the removed node
+
+
