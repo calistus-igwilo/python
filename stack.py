@@ -6,6 +6,7 @@ Implement a Stack:
 One should be able to add to the stack and remove from the stack following the LIFO
 property.
 """
+
 class Node:
     def __init__(self, value):
         self.value = value
@@ -53,7 +54,7 @@ class Stack:
         if(self.first == None):    
             print("List is empty")   
             return;    
-        print("Nodes of doubly linked list: ")   
+        print("Nodes of singly linked list: ")   
         while(current != None):     
             #Prints each node by incrementing pointer.    
             print(current.value, end=" ")   
@@ -66,7 +67,52 @@ stack.display()
 stack.remove_from_begining()
 stack.display()
 
+
+"""
+Reverse polish notation:
+Evaluate the value of an arithmetic expression in Reverse Polish Notation. Valid 
+operators are +, -, *, and / Note that division between two integers should truncate
+toward zero. It is guaranteed that the given RPN expression is always valid. That 
+means the expression would always evaluate to a result, and there will not be any
+division by zero operation. The input is an array of strings where each element is
+either a valid operator or an integer. E.g ["1", "2", "+"]
+"""
+
+class StackArray:
+    """ LIFO Stack implementation using Python list/array as underlying storage"""
+    def __init__(self):
+        """ Create an empty stack """
+        self._data = []   #non-public list instance
+
+    def __len__(self):
+        """ Return the number of elements in the stack """
+        return len(self._data)
+
+    def is_empty(self):
+        """Return True if stack is empty"""
+        return len(self._data) == 0
+
+    def push(self, value):
+        """Add value/element to the top of the stack"""
+        self._data.append(value)
+
+    def top(self):
+        """Return (but do not remove) the element at the top of the stack
+        Raise Empty exception if the stack is empty
+        """
+        if self.is_empty():
+            raise IndexError("Stack is empty")
+        return self._data[-1]  # last item in the list
+    
+    def pop(self):
+        """Remove and return the element from the top of the stack (LIFO)
+        Raise Empty exception if the stack is empty
+        """
+        if self.is_empty():
+            raise IndexError("Stack is empty")
+        return self._data.pop()  # remove last item from the list
         
+
 
 
 
