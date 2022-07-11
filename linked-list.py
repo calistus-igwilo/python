@@ -370,9 +370,6 @@ class DoublyLinkedList:
                 self.tail = node
                  
 
-
-
-
     def display(self):    
         #Node current will point to head    
         current = self.head;    
