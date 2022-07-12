@@ -232,3 +232,4 @@ class FCLayer(BaseLayer):
         self.size = size
 
 print(FCLayer(42))
+

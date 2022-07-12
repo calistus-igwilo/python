@@ -140,3 +140,12 @@ linked_list_doubly.tail = five
 linked_list_doubly.display()
 linked_list_doubly.remove(two)
 linked_list_doubly.display()
+
+
+height = 100
+bounce = 1
+while bounce <= 3:
+    height = height * (3/5)
+    bounce += 1
+new = height
+print(new)

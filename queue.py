@@ -74,7 +74,7 @@ class Node:
 class QueueLinkedList:
     """Implement Queue data structure using Singly Linked List"""
     def __init__(self):
-        """Create empty queue"""
+        """Create an empty queue"""
         self.first = None
         self.last = None
         self.size = 0
@@ -106,4 +106,82 @@ class QueueLinkedList:
             self.last = None
         return temp     # return the removed node
 
+    def display(self):    
+        #Node current will point to head    
+        current = self.first   
+        if(self.first == None):    
+            print("Queue is empty")   
+            return;    
+        print("Elements of Queue: ")   
+        while(current != None):     
+            #Prints each node by incrementing pointer.    
+            print(current.value, end=" ")   
+            current = current.next
+
+queue = QueueLinkedList()
+queue.enqueue(1)
+queue.enqueue(2)
+queue.enqueue(3)
+
+queue.display()
+queue.dequeue()
+queue.display()
+
+
+"""
+Queue with Stack:
+Implement a first in first out (FIFO) queue using only two stacks. The implemented 
+queue should support all the functions of a normal queue (push, peek, pop, and empty)
+Implement the MyQueue class:
+- push(val): Pushes element val tothe back of the queue
+- pop(): Removes the element from the front of the queue and returns it
+- peek(): Returns the element at the front of the queue
+- empty(): Returns true if the queue is empty, false otherwise.
+"""
+class MyQueue:
+    def __init__(self):
+        """Create an empty Queue object"""
+        self.in_stack = []
+        self.out_stack = []
+    
+    def push(self, value):
+        """Add element at the end of the queue"""
+        self.in_stack.append(value)
+
+    def pop(self):
+        """Remove and return the last element of the queue"""
+        # if out_stack is empty, then pop from the in_stack
+        if not len(self.out_stack):         # check if the out_stack is empty
+            while len(self.in_stack):       # while data exists in the in_stack
+                self.out_stack.append(self.in_stack.pop())  #pop from in_stack and push to out_stack
+        # remove and return the last item in out_stack which was first item in in_stack (FIFO)
+        return self.out_stack.pop()  
+    
+    def peek(self):
+        """Return the element at the begining of the queue"""
+        # if out_stack is empty, then pop from the in_stack
+        if not len(self.out_stack):         # check if the out_stack is empty
+            while len(self.in_stack):       # while data exists in the in_stack
+                self.out_stack.push(self.in_stack.pop())  #pop from in_stack and push to out_stack
+        # return the last item in out_stack which was first item in in_stack (FIFO)
+        return self.out_stack[len(self.out_stack)-1] 
+
+    def empty(self):
+        """
+        Return True if the queue is empty
+
+        :rtype: bool
+        """
+        in_stack_length = len(self.in_stack)
+        out_stack_length = len(self.out_stack)
+        # if both are 0, then return true
+        return not in_stack_length and not out_stack_length
+
+q = MyQueue()
+q.push(1)
+q.push(2)
+q.push(3)
+print(q.pop())
+print(q.pop())
+print(q.empty())
 
