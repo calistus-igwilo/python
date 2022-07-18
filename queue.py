@@ -162,7 +162,7 @@ class MyQueue:
         # if out_stack is empty, then pop from the in_stack
         if not len(self.out_stack):         # check if the out_stack is empty
             while len(self.in_stack):       # while data exists in the in_stack
-                self.out_stack.push(self.in_stack.pop())  #pop from in_stack and push to out_stack
+                self.out_stack.append(self.in_stack.pop())  #pop from in_stack and push to out_stack
         # return the last item in out_stack which was first item in in_stack (FIFO)
         return self.out_stack[len(self.out_stack)-1] 
 
@@ -181,7 +181,7 @@ q = MyQueue()
 q.push(1)
 q.push(2)
 q.push(3)
-print(q.pop())
-print(q.pop())
+#print(q.pop())
 print(q.empty())
+print(q.peek())
 
