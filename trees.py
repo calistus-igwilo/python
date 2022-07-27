@@ -39,6 +39,22 @@ class BinarySearchTree:
                     tree.right = node
                     return self 
                 tree = tree.right 
+    
+
+    def find(self, value):
+        if not self.root:
+            return False
+        tree = self.root 
+        while tree:
+            if value < tree.value:
+                # move left
+                tree = tree.left
+            elif value > tree.value:
+                # move right
+                tree = tree.right 
+            elif value == tree.value:
+                return tree 
+
 
     
 
