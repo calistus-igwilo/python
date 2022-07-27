@@ -21,9 +21,24 @@ class BinarySearchTree:
 
     def insert(self, value):
         node = Node()
-        if not self.root:
+        if not self.root:  #if there is no root, make the node the root
             self.root = node 
             return self
+        tree = self.root    # else, store the root in tree variable
+        while True:
+            if value < tree.value:
+                # move left
+                if not tree.left:  # if the node is a leaf
+                    tree.left = node
+                    return self 
+                tree = tree.left
+            else:
+                # move right
+                # value > = tree.value
+                if not tree.right:
+                    tree.right = node
+                    return self 
+                tree = tree.right 
 
     
 
