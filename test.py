@@ -68,15 +68,15 @@ else:
 lines = [1,2,3,4,5,6,7,8,9]
 print(lines[-4:])
 
-import re
-with open("log.txt", 'r') as lines:
-    for line in lines:
-        #print(line[3])
-        print(line.split("[")[1].split("]")[0])
-        #print(line.split()[3].strip("[]"))
-        #print(line.split("[" or "]"[3:5]))
-        #print(" ".join(line.split()[3:5]).strip("[]"))
-        #print(re.split("\[|\]", line)[1])
+# import re
+# with open('log.txt', 'r') as lines:
+#     for line in lines:
+#         #print(line[3])
+#         print(line.split("[")[1].split("]")[0])
+#         #print(line.split()[3].strip("[]"))
+#         #print(line.split("[" or "]"[3:5]))
+#         #print(" ".join(line.split()[3:5]).strip("[]"))
+#         #print(re.split("\[|\]", line)[1])
 
 
 class Node:
@@ -149,3 +149,25 @@ while bounce <= 3:
     bounce += 1
 new = height
 print(new)
+
+
+S = "111222311"
+def compress_string(S):
+    result = []
+    temp = []
+    i = 0
+    j = i+1
+    cnt = 1
+
+    if len(S) == 0:
+        return "string must contain at least 1 element"
+    while S[j]:
+        temp.append(S[i])
+        while S[i] == S[j]:
+            cnt += 1
+            i += 1
+        result.append((cnt, temp[-1]))
+        temp = []
+    print(f'Groups: {result}')
+
+compress_string(S)

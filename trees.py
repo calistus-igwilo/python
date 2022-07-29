@@ -54,6 +54,7 @@ class BinarySearchTree:
                 tree = tree.right 
             elif value == tree.value:
                 return tree 
+        return False
 
 
     

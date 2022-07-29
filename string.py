@@ -221,6 +221,38 @@ target = 3
 print(search_rotation(nums, target))
 
 
+# Compress the string
+"""
+You are given a string S Suppose a character 'c' occurs consecutively X 
+times in the string. Replace these consecutive occurrences of the 
+character 'c' with (X, c) in the string.
+"""
+S = 1222311
+def compress_string(S):
+    result = []
+    temp = []
+    pointer = 1
+    i = 0
+    j = i+1
+    cnt = 1
+
+
+    if len(S) == 0:
+        return "string must contain at least 1 element"
+    while S(j):
+        temp.append(S[i])
+        while S[i] == S[j]:
+            cnt += 1
+            i += 1
+        result.append((cnt, temp[-1]))
+        temp = []
+    print(result)
+
+
+
+
+
+
 
 
 
