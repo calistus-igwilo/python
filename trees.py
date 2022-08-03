@@ -55,6 +55,34 @@ class BinarySearchTree:
             elif value == tree.value:
                 return tree 
         return False
+    
+
+    def remove(self, value, current=self.root, parent=None):
+        if not self.root:
+            return False
+        while current:
+            if value < current.value:
+                parent = current
+                current = current.left
+            elif value > current.value:
+                parent = current
+                current = current.right
+            else:
+                # found the node to be deleted
+                # if node to be deleted has 2 children
+                if current.left != None and current.right != None:
+                    current.value = self.getMin(current.right)
+                    self.remove(current.value, current.right, current)  #remove the min value
+                elif parent != None:  # if deleting the root node
+                    if current.left != None:  #if it has a lefft child. The right child has been taken care of above
+                        current.value = current.lefft.value
+                        current.left = current.left.left
+                        current.right = current.left.right
+
+    def getMin(self, node):
+        while node.left != None:
+            node = node.left
+        return node.value
 
 
     
