@@ -129,6 +129,19 @@ class BinarySearchTree:
         trav(current)
         return arr
 
+    def dfs_post_order(self):
+        if self.root == None:
+            return []
+        arr = []
+        current = self.root
+        def trav(node):
+            if node.left:
+                trav(node.left)
+            if node.right:
+                trav(node.right)
+            arr.append(node)
+        trav(current)
+
 
 """
 Write a 4 instance methods for a Binary Search Tree class to traverse the BST
