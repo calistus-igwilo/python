@@ -171,3 +171,6 @@ def compress_string(S):
     print(f'Groups: {result}')
 
 compress_string(S)
+
+arr = [1, 2, 3, 4]
+print(f'Arr.pop {arr.pop([0])}')

@@ -113,7 +113,22 @@ class BinarySearchTree:
             if node.right:
                 queue.append(node.right)
         return arr 
+    
+    def dfs_in_order(self):
+        if self.root == None:
+            return []
+        arr = []
+        current = self.root
+        def trav(self, node):
+            if node.left:
+                trav(node.left)
+            arr.append(node)
+            if node.right:
+                trav(node.right)
+        trav(current)
+        return arr
 
+    # current, left, right
     def dfs_pre_order(self):
         if self.root == None:
             return []
@@ -129,6 +144,7 @@ class BinarySearchTree:
         trav(current)
         return arr
 
+    # left, right, current
     def dfs_post_order(self):
         if self.root == None:
             return []
@@ -141,6 +157,7 @@ class BinarySearchTree:
                 trav(node.right)
             arr.append(node)
         trav(current)
+        return arr
 
 
 """
@@ -156,6 +173,9 @@ contains all the values of the BST
 """
 # implemented in the BinarySearchTree class
 # 1. breadth_first()
+# 2. dfs_in_order()
+# 3. dfs_pre_order()
+# 4. dfs_post_order()
 
 
 
@@ -175,3 +195,58 @@ bst.insert(29)
 bst.insert(60)
 
 print(f'breadth first: {bst.breadth_first()}')
+
+
+"""
+Write a function that takes the root of a binary tree, and returns the level order
+traversal of its nodes' values. (i.e., from left to right, level by level). Initially
+write an instance method for the Binary Search tree class to insert the values given 
+as an array into the Binary tree (from left to right, level by level). Each value in 
+the array which is not null is to be made a node and added to the tree
+"""
+class BinaryTree:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, arr):
+        if len(arr) == 0:
+            return
+        i = 0
+        # if root is null
+        if not self.root:
+            if arr[0] == None:
+                return 
+            else:
+                node = Node(arr[0])
+                self.root = node
+                i += 1
+                if i == len(arr):
+                    return self
+        # insert elements
+        queue = [self.root]
+        while queue:
+            current = queue.pop(0)
+            # left
+            if not current.left:
+                if arr[i] is not None:
+                    node = Node(arr[i])
+                    current.left = node
+                i += 1
+                if i == len(arr):
+                    return self
+            if current.left:
+                queue.append(current.left)
+            # right
+            if not current.right:
+                if arr[i] is not None:
+                    node = Node(arr[i])
+                    current.right = node
+                i += 1
+                if i == len(arr):
+                    return self
+            if current.right:
+                queue.append(current.right)
+
+tree = BinaryTree()
+tree.insert([1,2,3,4,5])
+tree.insert([6,7,8])
