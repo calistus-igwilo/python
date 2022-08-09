@@ -247,6 +247,27 @@ class BinaryTree:
             if current.right:
                 queue.append(current.right)
 
+
+def level_order_traversal(root):
+    if not root:
+        return []
+    output = []
+    queue = [root]
+    while len(queue):
+        length = len(queue)
+        count = 0
+        curr_level_values = []
+        while count < length:
+            curr = queue.pop(0)
+            curr_level_values.append(curr)
+            if curr.left:
+                queue.append(curr.left)
+            if curr.right:
+                queue.append(curr.right)
+            count += 1
+        output.append(curr_level_values)
+
 tree = BinaryTree()
-tree.insert([1,2,3,4,5])
-tree.insert([6,7,8])
+tree.insert([7,11,1,None,7,2,8,None,None,None,3,None,None,5,None])
+
+print(level_order_traversal(tree.root))
