@@ -267,7 +267,35 @@ def level_order_traversal(root):
             count += 1
         output.append(curr_level_values)
 
+
+
 tree = BinaryTree()
 tree.insert([7,11,1,None,7,2,8,None,None,None,3,None,None,5,None])
 
 print(level_order_traversal(tree.root))
+
+
+"""
+1. Given the root of a binary tree, imagine yourself standing on the right side of it
+return the values of the nodes you can see ordered from top to bottom.
+2. Given the root of the binary tree, imagine yourself standing on the left side of it
+return the values of the nodes you can see ordered from top to bottom
+"""
+def right_view(root):
+    if not root:
+        return []
+    right = []
+    queue = [root]
+    while len(queue):
+        length = len(queue)
+        count = 0
+        while count < length:
+            count += 1
+            current = queue.pop(0)
+            if count == length:
+                right.append(current)
+            if current.left:
+                queue.append(current.ledft)
+            if current.right:
+                queue.append(current.right)
+    return right 
