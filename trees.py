@@ -299,3 +299,23 @@ def right_view(root):
             if current.right:
                 queue.append(current.right)
     return right 
+
+
+def left_view(root):
+    if not root:
+        return []
+    left = []
+    queue = [root]
+    while len(queue):
+        length = len(queue)
+        count = 0
+        while count < length:
+            count += 1
+            current = queue.pop(0)
+            if count == 1:
+                left.append(current)
+            if current.left:
+                queue.append(current.ledft)
+            if current.right:
+                queue.append(current.right)
+    return left 
