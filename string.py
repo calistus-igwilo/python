@@ -284,7 +284,41 @@ def minion_game(string_):
 
 minion_game("BANANA")
 
+def merge_the_tools(string, k):
+    sub_sequences = []
+    temp = ""
+    for i in range(0, len(string), k):
+        sub_sequences.append((string[i:i+k]))
+    print(sub_sequences)
+    print("lenght of subsequence: ",len(sub_sequences))
 
+    # check for duplicate alphabets
+    for string in sub_sequences:
+        for i in range(k):
+            if string[i] not in temp:
+                temp += string[i]
+        print(temp)
+        temp = ""
+
+s = 'AAABCADDE'
+merge_the_tools(s)
+
+
+"""
+You are given a string and your task is to swap cases. In other words, convert all 
+lowercase letters to uppercase letters and vice versa.
+"""
+def swap_case(s):
+    result = ""
+    for i in range(len(s)):
+        if s[i].isupper():
+            result += s[i].lower()
+        else:
+            result += s[i].upper()
+    return result
+
+t = "Www.HackerRank.com"
+swap_case(t)
 
 
 
