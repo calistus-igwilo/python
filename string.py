@@ -321,6 +321,29 @@ t = "Www.HackerRank.com"
 swap_case(t)
 
 
+"""
+A user enters a string and a substring. You have to print the number of times that the 
+substring occurs in the given string. String traversal will take place from left to right, 
+not from right to left.
+String letters are case-sensitive.
+"""
+def count_substring(string, sub_string):
+    substring_length = len(sub_string)
+    string_length = len(string)
+    end = string_length - 2
+    cnt = 0
+    
+    for i in range(0, end):
+        if string[i:i+substring_length] == sub_string:
+            cnt += 1
+    return cnt 
+
+s = "ABCDCDC"
+sub = "CDC"
+count_substring(s, sub)
+
+
+
 
 
 
