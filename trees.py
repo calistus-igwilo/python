@@ -301,7 +301,8 @@ def right_view(root):
     return right 
 
 
-def left_view(root):
+def left_view(value):
+    root = Node(value)
     if not root:
         return []
     left = []
@@ -313,9 +314,9 @@ def left_view(root):
             count += 1
             current = queue.pop(0)
             if count == 1:
-                left.append(current)
+                left.append(current.value)
             if current.left:
-                queue.append(current.ledft)
+                queue.append(current.left)
             if current.right:
                 queue.append(current.right)
     return left 
@@ -325,7 +326,8 @@ def left_view(root):
 Given the root of a binary tree, invert the tree, and return its root.
 (Invert means to swap every left node for its corresponding right node/get mirror image)
 """
-def invert_iterative(root):
+def invert_iterative(value):
+    root = Node(value)
     if not root:
         return []
     queue = [root]
@@ -340,3 +342,17 @@ def invert_iterative(root):
         if current.right:
             queue.append(current.right)
     return root
+
+
+def invert_recursive(value):
+    node = Node(value)
+    if not node:
+        return []
+    # swap
+    temp = node.left
+    node.left = node.right
+    node.right = temp
+    # recursive call
+    invert_recursive(node.left)
+    invert_recursive(node.right)
+    return node 
