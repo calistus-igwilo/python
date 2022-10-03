@@ -284,6 +284,7 @@ def minion_game(string_):
 
 minion_game("BANANA")
 
+
 def merge_the_tools(string, k):
     sub_sequences = []
     temp = ""
@@ -340,11 +341,68 @@ def count_substring(string, sub_string):
 
 s = "ABCDCDC"
 sub = "CDC"
-count_substring(s, sub)
+count_substring(s, sub)  # 2
 
 
+"""
+You are given a string S.
+Your task is to find out if the string  contains: alphanumeric characters, 
+alphabetical characters, digits, lowercase and uppercase characters.
 
+Output Format:
+In the first line, print True if  has any alphanumeric characters. Otherwise, print False.
+In the second line, print True if  has any alphabetical characters. Otherwise, print False.
+In the third line, print True if  has any digits. Otherwise, print False.
+In the fourth line, print True if  has any lowercase characters. Otherwise, print False.
+In the fifth line, print True if  has any uppercase characters. Otherwise, print False.
+"""
+s = "qA2"
+print(s.isalnum())
+def string_type(s):
+    temp = []
+    
+    for char in s:
+        temp.append(char.isalnum())
+    if True in temp:
+        print(True)
+    else:
+        print(False)
+    temp =[]
 
+    for char in s:
+        temp.append(char.isalpha())
+    if True in temp:
+        print(True)
+    else:
+        print(False)
+    temp =[]
+
+    for char in s:
+        temp.append(char.isdigit())
+    if True in temp:
+        print(True)
+    else:
+        print(False)
+    temp =[]
+
+    for char in s:
+        temp.append(char.islower())
+    if True in temp:
+        print(True)
+    else:
+        print(False)
+    temp =[]
+
+    for char in s:
+        temp.append(char.isupper())
+    if True in temp:
+        print(True)
+    else:
+        print(False)
+    temp =[]
+
+z = "qA2"
+string_type(z)        
 
 
 
