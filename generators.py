@@ -9,6 +9,7 @@ def file_gen(names):
     for name in names:
         if name.endswith('.txt'):
             yield name
+            
 names = ['data1.txt', 'data2.txt', 'data3.txt', 'view.jpg']
 print(list(file_gen(names)))
 

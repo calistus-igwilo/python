@@ -25,7 +25,7 @@ Expected result:
 items = [1, 3, 4, 5, 6, 9, 10, 17, 23, 24]
 result = []
 for item in items:
-    if not item % 2 != 0:
+    if item % 2 == 0:
         result.append(item)
 print(result)
 
@@ -149,9 +149,7 @@ for word in words:
 print(result)
 
 # Another solution using list comprehension
-words = text.split()
-words = [word.lower() for word in words]
-words = [word.replace('.', '').replace(',', '') for word in words]
+words = text.lower().strip().replace('.', '').split()
 words = [word for word in words if len(word) > 6]
 print(words)
 

@@ -1,32 +1,28 @@
-S = "111222311"
+S = [1, 1, 1, 2, 2, 2, 3, 1, 1]
 def compress_string(S):
     result = []
     temp = []
-    i = 0
-    cnt = 0
-    j = i + 1
+    repeat = []
+  
 
 
     if len(S) == 0:
         return "string must contain at least 1 element"
-    while i <= len(S)-1:
-        temp.append(S[i])
-        cnt += 1    
-        while  S[i] == S[j]:
-            temp.append(S[i])
-            cnt += 1
-            i += 1
-            j += 1
-            print(f'i: {i}')
-            print(f'j: {j}')
-            print(f'cnt: {cnt}')
+    S = S[::-1]
+    print("reverse", S)
+    
+    while len(S):
+        temp.append(S.pop())
+        while S[-1] == temp[-1]:
+            temp.append(S.pop())
+        result.append(temp[-1])
+        repeat.append(len(temp))
+        print(result)
+        print(repeat)
+        temp = []
+    answer = dict(zip(result, repeat))
+    print("numbe, repeat", answer)
         
-        result.append((cnt, temp[-1]))
-        print(f'Layer 2 i: {i}')
-        print(f'Layer 2 j: {j}')
 
-        #temp = []
-        
-    return result
 
 compress_string(S)
